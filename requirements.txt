@@ -1,0 +1,21 @@
+# Core libraries
+langchain
+langchain-community
+langchain-core
+openai
+chromadb
+tiktoken
+
+# PDF and text processing
+pypdf
+python-dotenv
+
+# Agents and monitoring
+watchdog
+
+# Web API
+fastapi
+uvicorn
+
+# Utilities
+numpy
