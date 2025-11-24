@@ -1,0 +1,24 @@
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+
+# VS Code settings
+.vscode/
+
+# Models & vector databases
+models/
+*.bin
+*.json
+
+# Data folder (local PDFs, not needed on GitHub)
+data/
+
+# Jupyter notebook cache
+.ipynb_checkpoints/
+
