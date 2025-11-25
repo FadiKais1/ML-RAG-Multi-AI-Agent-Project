@@ -1,16 +1,16 @@
-from langchain_openai import OpenAIEmbeddings
-from typing import List
+from dotenv import load_dotenv
+load_dotenv()
+
+import os
+from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings
 
 def get_embeddings_model():
-    """
-    Returns the embeddings model used for generating vector representations.
-    """
-    return OpenAIEmbeddings(model="text-embedding-3-small")
+    return NVIDIAEmbeddings(
+        model="nvidia/nv-embedqa-e5-v5",
+        api_key=os.getenv("NVIDIA_API_KEY")
+    )
 
-def embed_chunks(chunks: List[str]):
-    """
-    Takes a list of text chunks and returns a list of embeddings.
-    """
+def embed_chunks(chunks):
     model = get_embeddings_model()
     embeddings = model.embed_documents(chunks)
     return embeddings

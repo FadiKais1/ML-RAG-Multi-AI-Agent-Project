@@ -1,17 +1,14 @@
 from typing import List
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-def chunk_text(text: str, chunk_size: int = 500, overlap: int = 100) -> List[str]:
+def chunk_text(text: str) -> List[str]:
     """
-    Splits text into overlapping chunks for embedding.
+    Splits text into NVIDIA-safe chunks under 512 tokens.
     """
-    words = text.split()
-    chunks = []
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=300,
+        chunk_overlap=30,
+        separators=["\n\n", "\n", ". ", "! ", "? ", " ", ""]
+    )
 
-    start = 0
-    while start < len(words):
-        end = start + chunk_size
-        chunk = " ".join(words[start:end])
-        chunks.append(chunk)
-        start = end - overlap  # move forward with overlap
-
-    return chunks
+    return splitter.split_text(text)
